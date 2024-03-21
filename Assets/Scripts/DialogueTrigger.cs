@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DialogueEditor;
 
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
+    [Header("NPC Conversation")]
+    [SerializeField] private NPCConversation myConversation;
 
     public bool isInRange;
+
+    public PlayerMovement script;
 
     private void Awake()
     {
@@ -25,8 +28,9 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                ConversationManager.Instance.StartConversation(myConversation);
                 isInRange=false;
+                script.moveSpeed = 0f;
             }
         }
         else
@@ -51,5 +55,10 @@ public class DialogueTrigger : MonoBehaviour
         {
             isInRange = false;
         }
+    }
+
+    public void ResetSpeed()
+    {
+        script.moveSpeed = 5f;
     }
 }
