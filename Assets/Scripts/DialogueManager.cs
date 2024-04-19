@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
-    public PlayerMovement script;
+    //public PlayerMovement script;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -73,7 +73,7 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-        script.moveSpeed = 0f;
+        //script.moveSpeed = 0f;
 
         ContinueStory();
     }
@@ -82,7 +82,7 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        script.moveSpeed = 5f;
+        //script.moveSpeed = 5f;
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";

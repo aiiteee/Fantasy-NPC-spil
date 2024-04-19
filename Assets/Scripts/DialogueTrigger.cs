@@ -13,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public bool isInRange;
 
-    public PlayerMovement script;
+    //public PlayerMovement script;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class DialogueTrigger : MonoBehaviour
             {
                 ConversationManager.Instance.StartConversation(myConversation);
                 isInRange=false;
-                script.moveSpeed = 0f;
+                //script.moveSpeed = 0f;
             }
         }
         else
@@ -59,6 +59,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public void ResetSpeed()
     {
-        script.moveSpeed = 5f;
+        //script.moveSpeed = 5f;
     }
 }

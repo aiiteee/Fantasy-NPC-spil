@@ -13,7 +13,7 @@ public class TriggerZone : MonoBehaviour
     public GameObject DialogueBox;
     public GameObject Interactor;
 
-    public PlayerMovement script;
+    //public PlayerMovement script;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,7 +45,7 @@ public class TriggerZone : MonoBehaviour
             {
                 DialogueBox.SetActive(true);
                 Interactor.SetActive(false);
-                script.moveSpeed = 0f;
+                //script.moveSpeed = 0f;
             }
         }
 
