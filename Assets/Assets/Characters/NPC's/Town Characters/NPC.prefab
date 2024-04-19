@@ -411,7 +411,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4054210849312629647}
   - component: {fileID: 6459886180142779214}
-  - component: {fileID: 7144786155821972183}
   - component: {fileID: 407922121726121730}
   - component: {fileID: 8211229029781936807}
   - component: {fileID: 9023602588573705308}
@@ -492,52 +491,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7144786155821972183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5089718507280603753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d576f26c9a4ea410086e278032b35a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: ActivateInteractor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTriggerExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: DeActivateInteractor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isInZone: 0
-  DialogueBox: {fileID: 0}
-  Interactor: {fileID: 0}
-  script: {fileID: 0}
 --- !u!114 &407922121726121730
 MonoBehaviour:
   m_ObjectHideFlags: 0

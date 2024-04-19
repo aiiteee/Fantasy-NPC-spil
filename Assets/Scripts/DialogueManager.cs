@@ -82,7 +82,7 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        script.moveSpeed = 5f;
+        script.moveSpeed = 4f;
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
