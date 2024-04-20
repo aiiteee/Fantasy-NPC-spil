@@ -4,7 +4,58 @@ using UnityEngine;
 
 public class CatMovement : MonoBehaviour
 {
-    internal Transform thisTransform;
+    public float moveSpeed = 2f;
+    public Transform target;
+    [SerializeField] private float maxRange;
+    [SerializeField] private float minRange;
+    [SerializeField] private float timeWaited;
+
+    public Rigidbody2D rb;
+    public Animator animator;
+    Vector2 moveDirection;
+
+
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        if (Vector3.Distance(target.position, transform.position) <= maxRange && Vector3.Distance(target.position, transform.position) >= minRange)
+        {
+            StartCoroutine(WaitToFollow());
+
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
+        }
+
+
+    }
+
+    IEnumerator WaitToFollow()
+    {
+        yield return new WaitForSeconds(timeWaited);
+        FollowPlayer();
+    }
+
+
+    public void FollowPlayer()
+    {
+
+        animator.SetFloat("Horizontal", target.position.y - transform.position.y);
+        animator.SetFloat("Vertical", target.position.x - transform.position.x);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+    }
+
+
+
+    /*internal Transform thisTransform;
     public Animator animator;
     public bool move;
 
@@ -76,9 +127,9 @@ public class CatMovement : MonoBehaviour
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
 
 
-    }
+    }*/
 
-    
+
 
 
 
