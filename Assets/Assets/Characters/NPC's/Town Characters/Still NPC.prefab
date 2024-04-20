@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1718828284322234627}
   - component: {fileID: 737589999311259148}
   - component: {fileID: 667910813347864234}
-  - component: {fileID: 6801195480563801119}
   m_Layer: 3
   m_Name: Still NPC
   m_TagString: Untagged
@@ -110,31 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6801195480563801119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345744968267722036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentIDCounter: 1
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":333.2,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":null,"parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":null,"OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-  saveVersion: 110
-  DefaultName: 
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
-  NodeSerializedDataList:
-  - {fileID: 0}
-  ContinueFont: {fileID: 0}
-  EndConversationFont: {fileID: 0}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4519176731847956153
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +509,8 @@ MonoBehaviour:
   visualCue: {fileID: 9061142277503477997}
   myConversation: {fileID: 0}
   isInRange: 0
-  script: {fileID: 0}
+  playerScript: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &9061142277503477997
 GameObject:
   m_ObjectHideFlags: 0

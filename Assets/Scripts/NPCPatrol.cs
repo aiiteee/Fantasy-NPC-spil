@@ -31,10 +31,11 @@ public class NPCPatrol : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, speed * Time.deltaTime);
        
+        animator.SetFloat("Speed", speed);
         animator.SetFloat("Horizontal", patrolPoints[targetPoint].position.y - transform.position.y);
         animator.SetFloat("Vertical", patrolPoints[targetPoint].position.x - transform.position.x);
 
-        
+
     }
 
     void increaseTargetInt()
