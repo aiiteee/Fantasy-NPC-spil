@@ -3,12 +3,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-
     public float moveSpeed;
     public Rigidbody2D rb;
     Vector2 movement;
     public Animator animator;
+    
+
+    
+
+    
 
     // Update is called once per frame
     void Update()
@@ -25,4 +28,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
+
+
 }
