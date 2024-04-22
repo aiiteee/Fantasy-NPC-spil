@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject questsWindow;
     public GameObject map;
     public GameObject inventory;
+    public GameObject activeQuests;
     public GameObject icons;
+    
 
     public void ShowMenuBars()
     {
