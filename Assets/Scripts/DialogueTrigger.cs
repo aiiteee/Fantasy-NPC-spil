@@ -32,6 +32,7 @@ public class DialogueTrigger : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ConversationManager.Instance.StartConversation(myConversation);
+                ConversationManager.Instance.SetInt("characterLevel", 10);
                 isInRange=false;
                 playerScript.moveSpeed = 0f;
             }
