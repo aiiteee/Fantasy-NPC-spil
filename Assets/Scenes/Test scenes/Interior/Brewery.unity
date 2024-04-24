@@ -6385,7 +6385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaveRoomUI: {fileID: 512160586}
   isInRange: 0
-  sceneName: 
+  sceneName: Town Building
 --- !u!61 &1365921305
 BoxCollider2D:
   m_ObjectHideFlags: 0
