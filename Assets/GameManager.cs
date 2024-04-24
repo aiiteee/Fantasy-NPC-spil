@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,18 @@ public class GameManager : MonoBehaviour
     public GameObject inventory;
     public GameObject activeQuests;
     public GameObject icons;
+
+    public GameObject doorTrigger;
+
+    void update()
+    {
+        
+    }
     
+    /*public void ShowDoorTrigger()
+    {
+        showDoorTrigger.SetActive(true);
+    }*/
 
     public void ShowMenuBars()
     {
