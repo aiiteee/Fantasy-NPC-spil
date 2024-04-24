@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,12 @@ TagManager:
     locked: 0
   - name: House
     uniqueID: 1221513229
+    locked: 0
+  - name: Interior
+    uniqueID: 3449402967
+    locked: 0
+  - name: Interior Player
+    uniqueID: 3480046135
     locked: 0
   - name: UI
     uniqueID: 4218983631

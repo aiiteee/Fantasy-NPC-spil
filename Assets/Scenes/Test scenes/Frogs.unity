@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 1468777899}
   m_Layer: 0
   m_Name: FrogEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisAnimator: {fileID: 1468777900}
   moveSpeed: 3
-  decisionTime: {x: 1, y: 4}
+  decisionTime: {x: 1, y: 2}
 --- !u!61 &1468777898
 BoxCollider2D:
   m_ObjectHideFlags: 0
