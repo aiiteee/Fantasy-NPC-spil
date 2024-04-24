@@ -19,6 +19,9 @@ public class QuestManager : MonoBehaviour
     public GameObject SecondMarkX;
     public GameObject FirstMarkY;
     public GameObject SecondMarkY;
+    public GameObject returnToQuest;
+
+    public DialogueTrigger dialogueTrigger;
 
     
 
@@ -35,14 +38,24 @@ public class QuestManager : MonoBehaviour
     {
         FirstMarkY.SetActive(true);
         FirstMarkX.SetActive(false);
-        
+        dialogueTrigger.CheckMark1_1mark();
     }
 
     public void Checkmark1_2()
     {
         SecondMarkY.SetActive(true);
         SecondMarkX.SetActive(false);
-        
+        dialogueTrigger.CheckMark1_2mark();
     }
+
+    public void EndQuest1()
+    {
+        lineOneText.SetText("Return home for the night");
+        lineTwoText.SetText("");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+        returnToQuest.SetActive(false);
+}
 
 }

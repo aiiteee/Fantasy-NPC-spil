@@ -13,10 +13,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public bool isInRange;
     public bool hasSpokenTo=false;
-    public bool hasFinishedQuest = false;
+    public bool finishedQuest = false;
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
+
+    public GameObject returnToQuest;
 
     public PlayerMovement playerScript;
     public QuestManager questManager;
@@ -32,6 +34,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Update()
     {
+        if(checkMark1&&checkMark2)
+        {
+            finishedQuest = true;
+            returnToQuest.SetActive(true);
+        }
+             
         if (isInRange)
         {
             visualCue.SetActive(true);
@@ -39,8 +47,10 @@ public class DialogueTrigger : MonoBehaviour
             {
                 ConversationManager.Instance.StartConversation(myConversation);
                 ConversationManager.Instance.SetBool("hasSpokenTo",hasSpokenTo);
-                ConversationManager.Instance.SetBool("finishedQuest", hasFinishedQuest);
-                
+                //ConversationManager.Instance.SetBool("finishedQuestMark1", checkMark1);
+                //ConversationManager.Instance.SetBool("finishedQuestMark2", checkMark2);
+                ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
+
                 isInRange =false;
                 playerScript.moveSpeed = 0f;
             }
@@ -50,6 +60,8 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(false);
             
         }
+
+
     }
 
     public void HasSpokenTo()
@@ -67,14 +79,9 @@ public class DialogueTrigger : MonoBehaviour
         checkMark2 = true;
     }
 
+    
 
-    public void HasFinishedQuest1()
-    {
-        if(checkMark1 && checkMark2)
-        {
-            hasFinishedQuest=true;
-        }
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
