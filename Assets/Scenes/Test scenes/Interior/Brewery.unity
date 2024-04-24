@@ -6397,11 +6397,12 @@ MonoBehaviour:
   leaveRoomUI: {fileID: 512160586}
   newPlayer: {fileID: 0}
   oldPlayer: {fileID: 0}
-  doorTriger: {fileID: 0}
+  doorTrigger: {fileID: 1365921303}
   isInRange: 0
   isInside: 0
   sceneName: Town Building
   currentScene: Brewery
+  gameManager: {fileID: 0}
 --- !u!61 &1365921305
 BoxCollider2D:
   m_ObjectHideFlags: 0

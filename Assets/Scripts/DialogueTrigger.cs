@@ -64,6 +64,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public void ResetSpeed()
     {
-        playerScript.moveSpeed = 4f;
+        playerScript.moveSpeed = 5f;
     }
 }
