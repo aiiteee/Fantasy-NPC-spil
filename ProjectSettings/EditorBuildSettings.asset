@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Story scenes/Main Menu.unity
     guid: 4fd474b4a5af44541a6317e05975441e
   - enabled: 1
-    path: Assets/Scenes/Test scenes/Town Building.unity
+    path: Assets/Scenes/Story scenes/Day 0.unity
     guid: 039fe3c1be3324354b748074b87b3777
   - enabled: 1
     path: Assets/Scenes/Test scenes/House Building.unity
