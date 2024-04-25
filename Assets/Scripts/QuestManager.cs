@@ -5,27 +5,28 @@ using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
-    public bool isActive;
 
-    //public string questText1;
-    //public string questText2;
-
-    
-
-    public float goalAmount;
-    public float currentAmount;
-
+    [Header("TextMeshPro tekster")]
     public TMP_Text lineOneText;
     public TMP_Text lineTwoText;
 
+    [Header("Quest Mark cues")]
     public GameObject FirstMarkX;
     public GameObject SecondMarkX;
     public GameObject FirstMarkY;
     public GameObject SecondMarkY;
+
+    [Header("Return after quest object")]
     public GameObject returnToQuest;
 
+    [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
 
+    [Header("Item quest")]
+    public float goalAmount1;
+    public float currentAmount1;
+
+    [Header("Quest bools")]
     public bool questTwoBegun;
 
     
@@ -69,7 +70,7 @@ public class QuestManager : MonoBehaviour
     public void BeginQuest2()
     {
         lineOneText.SetText("Deliver potion to either Björn or Ranus");
-        lineTwoText.SetText("Gather 3 brightbloom flowers ("+currentAmount+"/"+goalAmount+")");
+        lineTwoText.SetText("Gather 3 brightbloom flowers ("+currentAmount1+"/"+goalAmount1+")");
         FirstMarkX.SetActive(true);
         SecondMarkX.SetActive(true);
         questTwoBegun = true;
@@ -82,8 +83,8 @@ public class QuestManager : MonoBehaviour
         
         if(questTwoBegun)
         {
-            lineTwoText.SetText("Gather 3 brightbloom flowers (" + currentAmount + "/" + goalAmount+")");
-            if (currentAmount == goalAmount)
+            lineTwoText.SetText("Gather 3 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1+")");
+            if (currentAmount1 == goalAmount1)
             {
                 SecondMarkY.SetActive(true);
                 SecondMarkX.SetActive(false);

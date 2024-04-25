@@ -23,7 +23,7 @@ public class Item : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position, volume);
                 Destroy(gameObject);
-                questManager.currentAmount += 1;
+                questManager.currentAmount1 += 1;
             }
 
         }
