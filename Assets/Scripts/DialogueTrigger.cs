@@ -100,7 +100,7 @@ public class DialogueTrigger : MonoBehaviour
         questBegun = true;
     }
 
-    public void nextSecondConversation()
+    public void NextSecondConversation()
     {
         secondConversation = true;
     }

@@ -106,6 +106,10 @@ public class QuestManager : MonoBehaviour
                 SecondMarkX.SetActive(false);
                 dialogueTrigger.CheckMark1_2mark();
             }
+            if (dialogueTrigger.finishedQuest)
+            {
+                EndQuest1();
+            }
         }
 
     }
