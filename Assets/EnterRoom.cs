@@ -11,7 +11,10 @@ public class EnterRoom : MonoBehaviour
     public bool enterBrewery;
     public bool enterHome;
 
+    public DialogueTrigger dialogueTrigger;
+
     public GameObject lastText;
+    public GameObject finishQuestFirst;
 
     // Update is called once per frame
     void Update()
@@ -26,18 +29,23 @@ public class EnterRoom : MonoBehaviour
                     SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
                 }
 
-                if(enterHome)
+                if(enterHome&&dialogueTrigger.finishedQuest)
                 {
                     lastText.SetActive(true);
                 }
-                
+
+                if (enterHome && !dialogueTrigger.finishedQuest)
+                {
+                    finishQuestFirst.SetActive(true);
+                }
+
             }
             
         }
         else
         {
             leaveOrEnterRoom.SetActive(false);
-
+            finishQuestFirst.SetActive(false);
         }
     }
 
