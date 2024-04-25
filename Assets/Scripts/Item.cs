@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioClip clip;
+    public float volume = 1;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +16,8 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-           Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+            Destroy(gameObject);
         }
     }
 }
