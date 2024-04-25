@@ -7,7 +7,7 @@ public class UIScenesManager : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene("Town Building");
+        SceneManager.LoadScene("Day 0");
     }
 
     public void QuitGame()

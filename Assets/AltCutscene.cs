@@ -17,7 +17,7 @@ public class AltCutscene : MonoBehaviour
 
     IEnumerator WaitButton() 
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1f);
         CloseCutSceneButton.SetActive(true);
     }
 

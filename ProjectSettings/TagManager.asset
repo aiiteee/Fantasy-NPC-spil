@@ -49,6 +49,9 @@ TagManager:
   - name: Objects
     uniqueID: 2368862063
     locked: 0
+  - name: BelowUI
+    uniqueID: 827934623
+    locked: 0
   - name: Player
     uniqueID: 352089017
     locked: 0
@@ -60,9 +63,6 @@ TagManager:
     locked: 0
   - name: Interior Player
     uniqueID: 3480046135
-    locked: 0
-  - name: BelowUI
-    uniqueID: 827934623
     locked: 0
   - name: UI
     uniqueID: 4218983631
