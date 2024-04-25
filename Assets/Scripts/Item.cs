@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public AudioClip clip;
-    public float volume = 1;
+   // public AudioClip clip;
+   // public float volume = 1;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +16,6 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
             Destroy(gameObject);
         }
     }
