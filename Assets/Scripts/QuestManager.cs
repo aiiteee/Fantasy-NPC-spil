@@ -49,15 +49,6 @@ public class QuestManager : MonoBehaviour
         dialogueTrigger.CheckMark1_2mark();
     }
 
-    /*public void BeforeEndQuest()
-    {
-        lineOneText.SetText("Find your boss Kensleigh at Bubblebrews Brewery");
-        lineTwoText.SetText("");
-        FirstMarkY.SetActive(false);
-        SecondMarkY.SetActive(false);
-        FirstMarkX.SetActive(true);
-    }*/
-
     
 
     public void EndQuest1()
@@ -70,6 +61,12 @@ public class QuestManager : MonoBehaviour
         
     }
 
-    
+    public void BeginQuest2()
+    {
+        lineOneText.SetText("Deliver potion to either Björn or Ranus");
+        lineTwoText.SetText("Gather 3 brightbloom flowers ("+currentAmount+"/"+goalAmount+")");
+        FirstMarkX.SetActive(true);
+        SecondMarkX.SetActive(true);
+    }
 
 }

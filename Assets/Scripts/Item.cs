@@ -6,18 +6,42 @@ public class Item : MonoBehaviour
 {
     public AudioClip clip;
     public float volume = 1;
+    public bool canPickUp;
+    public QuestManager questManager;
 
     // Update is called once per frame
     void Update()
     {
+        if(canPickUp)
+        {
+            if (Input.GetKeyDown(KeyCode.F)
+            {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                Destroy(gameObject);
+                questManager.currentAmount += 1;
+            }
+
+        }
+    }
+    
+
+    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canPickUp = true;
+        }
 
     }
-    void OnCollisionEnter2D(Collision2D other)
+
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+
+        if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
-            Destroy(gameObject);
+            canPickUp = false;
         }
     }
 }
