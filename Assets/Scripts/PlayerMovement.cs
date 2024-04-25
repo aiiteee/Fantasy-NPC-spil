@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5;
+    public float hexTime = 3;
     public Rigidbody2D rb;
     Vector2 movement;
     public Animator animator;
@@ -33,14 +34,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            moveSpeed -= 5;
+            moveSpeed = 0;
             animator.SetFloat("Hexed", 1);
-            Invoke("Dehex", 3);
+            Invoke("deHex", hexTime);
         }
     }
-    void Dehex()
+    void deHex()
     {
-        moveSpeed += 5;
         animator.SetFloat("Hexed", 0);
+        Invoke("deFrog", 1);
+    }
+    void deFrog()
+    {
+        moveSpeed = 5;
     }
 }
