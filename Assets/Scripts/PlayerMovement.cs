@@ -8,9 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
     public Animator animator;
-
-
-
+    public AudioClip clip;
+    public float volume = 1000;
 
 
 
@@ -38,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Hexed", 1);
             Invoke("deHex", hexTime);
         }
+        if (other.gameObject.tag == "Item")
+        {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+        }
     }
     void deHex()
     {
@@ -48,4 +51,5 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeed = 5;
     }
+
 }
