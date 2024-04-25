@@ -24,6 +24,7 @@ public class QuestManager : MonoBehaviour
     public DialogueTrigger dialogueTrigger;
 
     
+    
 
 
     public void BeginQuest1()
@@ -48,6 +49,17 @@ public class QuestManager : MonoBehaviour
         dialogueTrigger.CheckMark1_2mark();
     }
 
+    /*public void BeforeEndQuest()
+    {
+        lineOneText.SetText("Find your boss Kensleigh at Bubblebrews Brewery");
+        lineTwoText.SetText("");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+    }*/
+
+    
+
     public void EndQuest1()
     {
         lineOneText.SetText("Return home for the night");
@@ -55,7 +67,9 @@ public class QuestManager : MonoBehaviour
         FirstMarkY.SetActive(false);
         SecondMarkY.SetActive(false);
         FirstMarkX.SetActive(true);
-        returnToQuest.SetActive(false);
+        
     }
+
+    
 
 }

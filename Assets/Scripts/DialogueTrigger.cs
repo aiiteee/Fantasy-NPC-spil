@@ -18,6 +18,9 @@ public class DialogueTrigger : MonoBehaviour
     public bool checkMark1 = false;
     public bool checkMark2 = false;
 
+
+    public GameObject firstMarkY;
+    public GameObject firstMarkX;
     public GameObject returnToQuest;
 
     public PlayerMovement playerScript;
@@ -37,13 +40,14 @@ public class DialogueTrigger : MonoBehaviour
         if(checkMark1&&checkMark2)
         {
             finishedQuest = true;
-            returnToQuest.SetActive(true);
+            
         }
              
         if (isInRange)
         {
             visualCue.SetActive(true);
-            returnToQuest.SetActive(false);
+            //firstMarkY.SetActive(true);
+            //firstMarkX.SetActive(false);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ConversationManager.Instance.StartConversation(myConversation);
