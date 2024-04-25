@@ -14,6 +14,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool isInRange;
     public bool hasSpokenTo=false;
     public bool finishedQuest = false;
+    public bool questBegun=false;
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
@@ -53,6 +54,7 @@ public class DialogueTrigger : MonoBehaviour
                 ConversationManager.Instance.StartConversation(myConversation);
                 ConversationManager.Instance.SetBool("hasSpokenTo",hasSpokenTo);
                 ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
+                ConversationManager.Instance.SetBool("questBegun", questBegun);
 
                 isInRange =false;
                 playerScript.moveSpeed = 0f;
@@ -80,6 +82,11 @@ public class DialogueTrigger : MonoBehaviour
     public void CheckMark1_2mark()
     {
         checkMark2 = true;
+    }
+
+    public void QuestHasBegun()
+    {
+        questBegun = true;
     }
 
     
