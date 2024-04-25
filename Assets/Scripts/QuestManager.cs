@@ -56,6 +56,6 @@ public class QuestManager : MonoBehaviour
         SecondMarkY.SetActive(false);
         FirstMarkX.SetActive(true);
         returnToQuest.SetActive(false);
-}
+    }
 
 }

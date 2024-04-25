@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject doorTrigger;
 
-    void update()
+    public GameObject cutScene;
+
+    void Awake()
     {
-        
+        cutScene.SetActive(true);
     }
     
     /*public void ShowDoorTrigger()
@@ -37,5 +39,10 @@ public class GameManager : MonoBehaviour
         menuBars.SetActive(false);
         icons.SetActive(true);
         Time.timeScale=1;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }

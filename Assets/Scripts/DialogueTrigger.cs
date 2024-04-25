@@ -43,12 +43,11 @@ public class DialogueTrigger : MonoBehaviour
         if (isInRange)
         {
             visualCue.SetActive(true);
+            returnToQuest.SetActive(false);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ConversationManager.Instance.StartConversation(myConversation);
                 ConversationManager.Instance.SetBool("hasSpokenTo",hasSpokenTo);
-                //ConversationManager.Instance.SetBool("finishedQuestMark1", checkMark1);
-                //ConversationManager.Instance.SetBool("finishedQuestMark2", checkMark2);
                 ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
 
                 isInRange =false;

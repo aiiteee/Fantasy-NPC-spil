@@ -8,6 +8,10 @@ public class EnterRoom : MonoBehaviour
     public GameObject leaveOrEnterRoom;
     public string nextScene;
     public bool isInRange;
+    public bool enterBrewery;
+    public bool enterHome;
+
+    public GameObject lastText;
 
     // Update is called once per frame
     void Update()
@@ -17,8 +21,16 @@ public class EnterRoom : MonoBehaviour
             leaveOrEnterRoom.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
+                if (enterBrewery)
+                {
+                    SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
+                }
 
-                SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
+                if(enterHome)
+                {
+                    lastText.SetActive(true);
+                }
+                
             }
             
         }
