@@ -78,6 +78,22 @@ public class QuestManager : MonoBehaviour
         
     }
 
+    public void EndQuest2Hero()
+    {
+        FirstMarkY.SetActive(true);
+        FirstMarkX.SetActive(false);
+        dialogueTrigger.CheckMark1_1mark();
+        //Give point towards hero
+    }
+
+    public void EndQuest2Villain()
+    {
+        FirstMarkY.SetActive(true);
+        FirstMarkX.SetActive(false);
+        dialogueTrigger.CheckMark1_1mark();
+        // Give one point towards villain
+    }
+
     void Update()
     {
         
@@ -88,8 +104,14 @@ public class QuestManager : MonoBehaviour
             {
                 SecondMarkY.SetActive(true);
                 SecondMarkX.SetActive(false);
+                dialogueTrigger.CheckMark1_2mark();
+            }
+            if (dialogueTrigger.finishedQuest)
+            {
+                EndQuest1();
             }
         }
+
     }
 
 }

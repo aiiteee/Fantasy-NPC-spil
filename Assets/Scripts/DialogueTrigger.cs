@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("NPC Conversation")]
     [SerializeField] private NPCConversation myConversation;
+    [SerializeField] private NPCConversation mySecondConversation;
 
     public bool isInRange;
     public bool hasSpokenTo=false;
@@ -18,6 +19,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
+    public bool secondConversation;
 
 
     public GameObject firstMarkY;
@@ -51,10 +53,19 @@ public class DialogueTrigger : MonoBehaviour
             //firstMarkX.SetActive(false);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                ConversationManager.Instance.StartConversation(myConversation);
-                ConversationManager.Instance.SetBool("hasSpokenTo",hasSpokenTo);
-                ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
-                ConversationManager.Instance.SetBool("questBegun", questBegun);
+                
+                
+                if (secondConversation)
+                {
+                    ConversationManager.Instance.StartConversation(mySecondConversation);
+                }
+                else
+                {
+                    ConversationManager.Instance.StartConversation(myConversation);
+                    ConversationManager.Instance.SetBool("hasSpokenTo", hasSpokenTo);
+                    ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
+                    ConversationManager.Instance.SetBool("questBegun", questBegun);
+                }
 
                 isInRange =false;
                 playerScript.moveSpeed = 0f;
@@ -87,6 +98,11 @@ public class DialogueTrigger : MonoBehaviour
     public void QuestHasBegun()
     {
         questBegun = true;
+    }
+
+    public void NextSecondConversation()
+    {
+        secondConversation = true;
     }
 
     
