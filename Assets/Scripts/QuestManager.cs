@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
 
     [Header("Quest bools")]
     public bool questTwoBegun;
+    public bool canGoHome;
 
     
     
@@ -60,11 +61,12 @@ public class QuestManager : MonoBehaviour
     public void EndQuest1()
     {
         lineOneText.SetText("Return home for the night");
-        lineTwoText.SetText("");
+        lineTwoText.SetText(" ");
         FirstMarkY.SetActive(false);
         SecondMarkY.SetActive(false);
         FirstMarkX.SetActive(true);
-        
+        canGoHome = true;
+        questTwoBegun = false;
     }
 
     public void BeginQuest2()
@@ -94,6 +96,14 @@ public class QuestManager : MonoBehaviour
         // Give one point towards villain
     }
 
+    public void EndQuest2()
+    {
+        lineOneText.SetText("Return home");
+        lineTwoText.SetText(" ");
+        Destroy(SecondMarkX);
+        Destroy(SecondMarkY);
+    }
+
     void Update()
     {
         
@@ -106,10 +116,9 @@ public class QuestManager : MonoBehaviour
                 SecondMarkX.SetActive(false);
                 dialogueTrigger.CheckMark1_2mark();
             }
-            if (dialogueTrigger.finishedQuest)
-            {
-                EndQuest1();
-            }
+            
+            
+            
         }
 
     }

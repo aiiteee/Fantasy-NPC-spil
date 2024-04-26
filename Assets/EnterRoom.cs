@@ -12,6 +12,7 @@ public class EnterRoom : MonoBehaviour
     public bool enterHome;
 
     public DialogueTrigger dialogueTrigger;
+    public QuestManager questManager;
 
     public GameObject lastText;
     public GameObject finishQuestFirst;
@@ -29,12 +30,12 @@ public class EnterRoom : MonoBehaviour
                     SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
                 }
 
-                if(enterHome&&dialogueTrigger.finishedQuest)
+                if(enterHome&&questManager.canGoHome)
                 {
                     lastText.SetActive(true);
                 }
 
-                if (enterHome && !dialogueTrigger.finishedQuest)
+                if (enterHome && !questManager.canGoHome)
                 {
                     finishQuestFirst.SetActive(true);
                 }
