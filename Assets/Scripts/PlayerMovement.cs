@@ -22,6 +22,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+       
+        if (!Mathf.Approximately(movement.x, 0) || !Mathf.Approximately(movement.y, 0))
+        {
+            animator.SetFloat("lastMoveX", movement.x);
+            animator.SetFloat("lastMoveY", movement.y);
+        }
     }
 
     void FixedUpdate()

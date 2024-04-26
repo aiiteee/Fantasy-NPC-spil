@@ -343,6 +343,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &583035923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2883852698752254012, guid: 760a03028ebec4545bc40ff0eb0a3110, type: 3}
+  m_PrefabInstance: {fileID: 722827509437479204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1125297142
 GameObject:
   m_ObjectHideFlags: 3
@@ -548,6 +553,14 @@ PrefabInstance:
       propertyPath: volume
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 4092897961978592373, guid: 760a03028ebec4545bc40ff0eb0a3110, type: 3}
+      propertyPath: canPickUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092897961978592373, guid: 760a03028ebec4545bc40ff0eb0a3110, type: 3}
+      propertyPath: pickUpcue
+      value: 
+      objectReference: {fileID: 583035923}
     - target: {fileID: 7748256673572665846, guid: 760a03028ebec4545bc40ff0eb0a3110, type: 3}
       propertyPath: m_Name
       value: Pick_up_item
