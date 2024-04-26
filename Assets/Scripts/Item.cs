@@ -11,10 +11,10 @@ public class Item : MonoBehaviour
     public DialogueTrigger dialogueTrigger;
     public GameObject pickUpcue;
 
-    
+
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(canPickUp)
         {
