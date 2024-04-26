@@ -16,6 +16,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool hasSpokenTo=false;
     public bool finishedQuest = false;
     public bool questBegun=false;
+    public bool chosenDifferentPerson;
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
@@ -65,6 +66,7 @@ public class DialogueTrigger : MonoBehaviour
                     ConversationManager.Instance.SetBool("hasSpokenTo", hasSpokenTo);
                     ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                     ConversationManager.Instance.SetBool("questBegun", questBegun);
+                    ConversationManager.Instance.SetBool("chosenDifferentPerson", chosenDifferentPerson);
                 }
 
                 isInRange =false;
@@ -103,6 +105,11 @@ public class DialogueTrigger : MonoBehaviour
     public void NextSecondConversation()
     {
         secondConversation = true;
+    }
+
+    public void ChosenDifferentPerson()
+    {
+        chosenDifferentPerson = true;
     }
 
     
