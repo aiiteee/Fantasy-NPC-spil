@@ -16,6 +16,7 @@ public class EnterRoom : MonoBehaviour
 
     public GameObject lastText;
     public GameObject finishQuestFirst;
+    
 
     // Update is called once per frame
     void Update()
@@ -25,10 +26,7 @@ public class EnterRoom : MonoBehaviour
             leaveOrEnterRoom.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (enterBrewery)
-                {
-                    SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
-                }
+                
 
                 if(enterHome&&questManager.canGoHome)
                 {
@@ -39,7 +37,7 @@ public class EnterRoom : MonoBehaviour
                 {
                     finishQuestFirst.SetActive(true);
                 }
-
+                
             }
             
         }
@@ -58,6 +56,7 @@ public class EnterRoom : MonoBehaviour
         {
             isInRange = true;
         }
+        
 
 
     }
@@ -69,6 +68,7 @@ public class EnterRoom : MonoBehaviour
         {
             isInRange = false;
         }
+        
     }
 
 
