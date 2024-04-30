@@ -71,6 +71,11 @@ public class EnterRoom : MonoBehaviour
         
     }
 
+    public void NextDay()
+    {
+        SceneManager.LoadScene("Day 1");
+    }
+
 
   
 }

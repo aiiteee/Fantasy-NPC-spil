@@ -104,6 +104,11 @@ public class QuestManager : MonoBehaviour
         Destroy(SecondMarkY);
     }
 
+    public void BeginQuest3()
+    {
+
+    }
+
     void Update()
     {
         
