@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 352089017
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1430924441, guid: 0d715187faa2f4e78bcad315d88ec93b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -508,8 +508,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 9061142277503477997}
   myConversation: {fileID: 0}
+  mySecondConversation: {fileID: 0}
   isInRange: 0
+  hasSpokenTo: 0
+  finishedQuest: 0
+  questBegun: 0
+  chosenDifferentPerson: 0
+  checkMark1: 0
+  checkMark2: 0
+  secondConversation: 0
+  firstMarkY: {fileID: 0}
+  firstMarkX: {fileID: 0}
+  returnToQuest: {fileID: 0}
   playerScript: {fileID: 0}
+  questManager: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &9061142277503477997
 GameObject:
@@ -527,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7389653600058873215
 Transform:
   m_ObjectHideFlags: 0
@@ -537,8 +549,8 @@ Transform:
   m_GameObject: {fileID: 9061142277503477997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.84, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0.04, y: 1.93, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1718828284322234627}
@@ -582,9 +594,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -75983665
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2035183016, guid: 3977e97abda5b4808a3b6d2a6c4e44a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7f01d84936ecbf40b7b0402e48057e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
