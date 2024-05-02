@@ -138,4 +138,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         playerScript.moveSpeed = 5f;
     }
+
+    public void StartSecondConversation()
+    {
+        ConversationManager.Instance.StartConversation(mySecondConversation);
+    }
 }

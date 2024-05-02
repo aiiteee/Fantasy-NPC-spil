@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
 
     [Header("Quest bools")]
     public bool questTwoBegun;
+    public bool questThreeBegun;
     public bool canGoHome;
 
     
@@ -106,7 +107,11 @@ public class QuestManager : MonoBehaviour
 
     public void BeginQuest3()
     {
-
+        lineOneText.SetText("Collect 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
+        lineTwoText.SetText("Bring George a package");
+        FirstMarkX.SetActive(true);
+        SecondMarkX.SetActive(true);
+        questThreeBegun = true;
     }
 
     void Update()
