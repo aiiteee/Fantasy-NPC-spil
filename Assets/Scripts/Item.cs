@@ -43,6 +43,11 @@ public class Item : MonoBehaviour
             canPickUp = true;
         }
 
+        if (other.CompareTag("Player") && questManager.questThreeBegun)
+        {
+            canPickUp = true;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)

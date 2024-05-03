@@ -30,6 +30,7 @@ public class QuestManager : MonoBehaviour
     public bool questTwoBegun;
     public bool questThreeBegun;
     public bool canGoHome;
+    public bool packageGiven;
 
     
     
@@ -107,11 +108,19 @@ public class QuestManager : MonoBehaviour
 
     public void BeginQuest3()
     {
-        lineOneText.SetText("Collect 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
-        lineTwoText.SetText("Bring George a package");
+        lineOneText.SetText("Bring George a package");
+        lineTwoText.SetText("Gather 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
         FirstMarkX.SetActive(true);
         SecondMarkX.SetActive(true);
         questThreeBegun = true;
+    }
+
+
+
+
+    public void PackageGiven()
+    {
+        packageGiven = true;
     }
 
     void Update()
@@ -127,8 +136,17 @@ public class QuestManager : MonoBehaviour
                 dialogueTrigger.CheckMark1_2mark();
             }
             
-            
-            
+        }
+
+        if(questThreeBegun)
+        {
+            lineTwoText.SetText("Gather 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
+            if (currentAmount1 == goalAmount1&&packageGiven)
+            {
+                SecondMarkY.SetActive(true);
+                SecondMarkX.SetActive(false);
+                dialogueTrigger.CheckMark1_2mark();
+            }
         }
 
     }
