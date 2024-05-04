@@ -16,11 +16,13 @@ public class QuestManager : MonoBehaviour
     public GameObject FirstMarkY;
     public GameObject SecondMarkY;
 
-    [Header("Return after quest object")]
+    [Header("Game Objects")]
     public GameObject returnToQuest;
+    public GameObject trigger;
 
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
+    public Item item;
 
     [Header("Item quest")]
     public float goalAmount1;
@@ -31,10 +33,18 @@ public class QuestManager : MonoBehaviour
     public bool questThreeBegun;
     public bool canGoHome;
     public bool packageGiven;
+    public bool packageGivenAndrew=false;
+    public bool pickUpSword;
+    public bool swordFound;
 
     
     
+    public void Awake()
+    {
+        trigger.SetActive(false);
+    }
 
+    
 
     public void BeginQuest1()
     {
@@ -114,17 +124,25 @@ public class QuestManager : MonoBehaviour
         SecondMarkX.SetActive(true);
         questThreeBegun = true;
         dialogueTrigger.questBegun = true;
-
+        
     }
 
     public void BeginQuest3part2()
     {
-        lineOneText.SetText("Bring George a package");
-        lineTwoText.SetText(" ");
+        lineOneText.SetText("Bring the potion to Björn");
+        
         FirstMarkX.SetActive(true);
         FirstMarkY.SetActive(false);
         SecondMarkY.SetActive(false);
+        dialogueTrigger.finishedQuest = false;
+        
+    }
 
+    public void UpdateQuest3part2()
+    {
+        lineOneText.SetText("Return to Björn");
+        //Stop timer
+        dialogueTrigger.finishedQuest = true;
     }
 
 
@@ -133,6 +151,11 @@ public class QuestManager : MonoBehaviour
     public void PackageGiven()
     {
         packageGiven = true;
+    }
+
+    public void PackageGivenAndrew()
+    {
+        packageGivenAndrew=true;
     }
 
     void Update()
@@ -153,14 +176,40 @@ public class QuestManager : MonoBehaviour
         if(questThreeBegun)
         {
             lineTwoText.SetText("Gather 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
-            if (currentAmount1 == goalAmount1&&packageGiven)
+            if (currentAmount1 == goalAmount1&&packageGivenAndrew)
             {
                 SecondMarkY.SetActive(true);
                 SecondMarkX.SetActive(false);
                 dialogueTrigger.CheckMark1_2mark();
+                
             }
+
+            if (dialogueTrigger.finishedQuest)
+            {
+                questThreeBegun= false;
+            }
+
+            if(currentAmount1 == goalAmount1)
+            {
+                trigger.SetActive(true);
+            }
+                
         }
 
+        if (dialogueTrigger.newText)
+        {
+            if (!swordFound)
+            {
+                lineOneText.SetText("Find Björns sword (press Q for description)");
+                lineTwoText.SetText(" ");
+                //start timer
+                pickUpSword = true;
+            }
+            
+            
+
+            
+        }
     }
 
 }

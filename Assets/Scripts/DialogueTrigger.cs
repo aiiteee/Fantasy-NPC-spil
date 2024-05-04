@@ -14,15 +14,17 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private NPCConversation myThirdConversation;
 
     public bool isInRange;
-    public bool hasSpokenTo=false;
+    public bool hasSpokenTo = false;
     public bool finishedQuest = false;
-    public bool questBegun=false;
+    public bool questBegun = false;
     public bool chosenDifferentPerson;
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
     public bool secondConversation;
     public bool thirdConversation;
+    public bool newText;
+    public bool cantFinishYet = false;
 
 
     public GameObject firstMarkY;
@@ -31,7 +33,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public PlayerMovement playerScript;
     public QuestManager questManager;
-    
+
 
     public Animator animator;
 
@@ -43,12 +45,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Update()
     {
-        if(checkMark1&&checkMark2)
+        if (checkMark1 && checkMark2)
         {
             finishedQuest = true;
-            
+
         }
-             
+
         if (isInRange)
         {
             visualCue.SetActive(true);
@@ -56,8 +58,8 @@ public class DialogueTrigger : MonoBehaviour
             //firstMarkX.SetActive(false);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                
-                
+
+
                 if (secondConversation)
                 {
                     ConversationManager.Instance.StartConversation(mySecondConversation);
@@ -75,19 +77,25 @@ public class DialogueTrigger : MonoBehaviour
                     ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                     ConversationManager.Instance.SetBool("questBegun", questBegun);
                     ConversationManager.Instance.SetBool("chosenDifferentPerson", chosenDifferentPerson);
+                    ConversationManager.Instance.SetBool("cantFinishYet", cantFinishYet);
                 }
 
-                isInRange =false;
+                isInRange = false;
                 playerScript.moveSpeed = 0f;
             }
         }
         else
         {
             visualCue.SetActive(false);
-            
+
         }
 
 
+    }
+
+    public void QuestFinished()
+    {
+        finishedQuest = true;
     }
 
     public void HasSpokenTo()
@@ -97,7 +105,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void CheckMark1_1mark()
     {
-        checkMark1=true;
+        checkMark1 = true;
     }
 
     public void CheckMark1_2mark()
@@ -117,7 +125,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void NextThirdConversation()
     {
-        thirdConversation=true;
+        thirdConversation = true;
     }
 
     public void ChosenDifferentPerson()
@@ -128,9 +136,21 @@ public class DialogueTrigger : MonoBehaviour
     public void oneMoreQuest()
     {
         finishedQuest = false;
+        hasSpokenTo=false;
     }
-    
 
+    public void nextQuestText()
+    {
+        newText = true;
+    }
+
+    public void CanFinishYet()
+    {
+        if (questManager.currentAmount1 == questManager.goalAmount1)
+        {
+            cantFinishYet = true;
+        }
+    }
     
 
     private void OnTriggerEnter2D(Collider2D other)
