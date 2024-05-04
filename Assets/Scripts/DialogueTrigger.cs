@@ -11,6 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("NPC Conversation")]
     [SerializeField] private NPCConversation myConversation;
     [SerializeField] private NPCConversation mySecondConversation;
+    [SerializeField] private NPCConversation myThirdConversation;
 
     public bool isInRange;
     public bool hasSpokenTo=false;
@@ -21,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool checkMark1 = false;
     public bool checkMark2 = false;
     public bool secondConversation;
+    public bool thirdConversation;
 
 
     public GameObject firstMarkY;
@@ -60,6 +62,12 @@ public class DialogueTrigger : MonoBehaviour
                 {
                     ConversationManager.Instance.StartConversation(mySecondConversation);
                 }
+
+                if (thirdConversation)
+                {
+                    ConversationManager.Instance.StartConversation(myThirdConversation);
+                }
+
                 else
                 {
                     ConversationManager.Instance.StartConversation(myConversation);
@@ -107,11 +115,20 @@ public class DialogueTrigger : MonoBehaviour
         secondConversation = true;
     }
 
+    public void NextThirdConversation()
+    {
+        thirdConversation=true;
+    }
+
     public void ChosenDifferentPerson()
     {
         chosenDifferentPerson = true;
     }
 
+    public void oneMoreQuest()
+    {
+        finishedQuest = false;
+    }
     
 
     

@@ -15,6 +15,7 @@ public class MapScript : MonoBehaviour
 
     [Header("Boolian")]
     public bool mapIsShowing=false;
+    public bool isDay1=false;
 
     public void Update()
     {
@@ -32,6 +33,11 @@ public class MapScript : MonoBehaviour
             {
                 HideMap();
             }
+        }
+
+        if (isDay1)
+        {
+
         }
     }
 

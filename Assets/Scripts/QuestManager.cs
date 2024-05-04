@@ -113,6 +113,18 @@ public class QuestManager : MonoBehaviour
         FirstMarkX.SetActive(true);
         SecondMarkX.SetActive(true);
         questThreeBegun = true;
+        dialogueTrigger.questBegun = true;
+
+    }
+
+    public void BeginQuest3part2()
+    {
+        lineOneText.SetText("Bring George a package");
+        lineTwoText.SetText(" ");
+        FirstMarkX.SetActive(true);
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+
     }
 
 
