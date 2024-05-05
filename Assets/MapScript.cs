@@ -12,6 +12,7 @@ public class MapScript : MonoBehaviour
     public GameObject mapVersion2;
     public GameObject mapVersion3;
     public GameObject mapVersion4;
+    public GameObject mapVersion5;
 
     [Header("Boolian")]
     public bool mapIsShowing=false;
@@ -24,6 +25,7 @@ public class MapScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M))
             {
                 ShowMap();
+                Time.timeScale = 0;
             }
         }
 
@@ -32,13 +34,11 @@ public class MapScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 HideMap();
+                Time.timeScale = 1;
             }
         }
 
-        if (isDay1)
-        {
-
-        }
+        
     }
 
     public void ShowMap()
@@ -73,5 +73,10 @@ public class MapScript : MonoBehaviour
         mapVersion4.SetActive(true);
     }
 
+    public void ShowMap5()
+    {
+        mapVersion4.SetActive(false);
+        mapVersion5.SetActive(true);
+    }
     
 }
