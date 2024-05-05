@@ -20,12 +20,14 @@ public class QuestManager : MonoBehaviour
     public GameObject returnToQuest;
     public GameObject trigger;
     public GameObject charlotteTrigger;
+    public GameObject squireTrigger;
     public GameObject shopkeeperTeaTrigger;
     public GameObject shopkeeperSugarTrigger;
     public GameObject shopkeeperTea;
     public GameObject shopkeeperSugar;
     public GameObject marigold;
     public GameObject squire;
+    public GameObject björn;
 
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
@@ -52,16 +54,22 @@ public class QuestManager : MonoBehaviour
     public bool situation3;
     public bool situation4;
 
+    [Header("Positions")]
+    public Transform squireSpeechPosition;
+
+
 
     public void Awake()
     {
         trigger.SetActive(false);
 
         charlotteTrigger.SetActive(false);
+        squireTrigger.SetActive(false);
         shopkeeperTeaTrigger.SetActive(false);
         shopkeeperSugarTrigger.SetActive(false);
         marigold.SetActive(false);
         squire.SetActive(false);
+        björn.SetActive(false);
     }
 
     
@@ -187,6 +195,11 @@ public class QuestManager : MonoBehaviour
     public void Quest4Situation2()
     {
         situation2 = true;
+        charlotteTrigger.SetActive(true);
+        squire.SetActive(true);
+        
+        björn.SetActive(true);
+        squire.transform.position = squireSpeechPosition.position;
     }
 
     public void Quest4Situation3()
@@ -294,6 +307,13 @@ public class QuestManager : MonoBehaviour
                 charlotteTrigger.SetActive(true);
             }
         }
+
+        if(situation2 && shopkeeperDone)
+        {
+            squireTrigger.SetActive(true);
+        }
+
+        
 
         if (dialogueTrigger.newText)
         {

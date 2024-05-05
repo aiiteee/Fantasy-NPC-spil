@@ -182,8 +182,23 @@ public class DialogueTrigger : MonoBehaviour
     public void ShopkeeperDone()
     {
         questManager.shopkeeperDone = true;
-        questManager.shopkeeperTeaTrigger.SetActive(false);
-        questManager.shopkeeperSugarTrigger.SetActive(false);
+        if (questManager.situation1)
+        {
+            questManager.shopkeeperTeaTrigger.SetActive(false);
+            questManager.shopkeeperSugarTrigger.SetActive(false);
+        }
+        if (questManager.situation2)
+        {
+            questManager.charlotteTrigger.SetActive(false);
+        }
+        
+        
+
+    }
+
+    public void SquireFinishedTalking()
+    {
+        questManager.squireTrigger.SetActive(false);
     }
 
     
