@@ -29,7 +29,14 @@ public class Item : MonoBehaviour
                 dialogueTrigger.CanFinishYet();
             }
 
-            if (!dialogueTrigger.newText)
+            if (Input.GetKeyDown(KeyCode.F) && questManager.questFourBegun)
+            {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                Destroy(gameObject);
+                questManager.currentAmount1 += 1;
+            }
+
+            if (!dialogueTrigger.newText &&!questManager.questFourBegun)
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {

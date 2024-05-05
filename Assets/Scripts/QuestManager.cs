@@ -23,6 +23,7 @@ public class QuestManager : MonoBehaviour
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
     public Item item;
+    public BranchSystem branchSystem;
 
     [Header("Item quest")]
     public float goalAmount1;
@@ -31,6 +32,7 @@ public class QuestManager : MonoBehaviour
     [Header("Quest bools")]
     public bool questTwoBegun;
     public bool questThreeBegun;
+    public bool questFourBegun;
     public bool canGoHome;
     public bool packageGiven;
     public bool packageGivenAndrew=false;
@@ -97,7 +99,8 @@ public class QuestManager : MonoBehaviour
         FirstMarkY.SetActive(true);
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
-        //Give point towards hero
+        // Give one point towards Björn
+        branchSystem.BjörnPoint();
     }
 
     public void EndQuest2Villain()
@@ -106,6 +109,7 @@ public class QuestManager : MonoBehaviour
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
         // Give one point towards villain
+        branchSystem.RanusPoint();
     }
 
     public void EndQuest2()
@@ -145,6 +149,20 @@ public class QuestManager : MonoBehaviour
         dialogueTrigger.finishedQuest = true;
     }
 
+    public void BeginQuest4()
+    {
+        lineOneText.SetText("Get Chocolate from Charlotte at the market");
+        lineTwoText.SetText("Gather 5 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1 + ")");
+        FirstMarkX.SetActive(true);
+        SecondMarkX.SetActive(true);
+        questFourBegun = true;
+        
+    }
+
+    public void EndQuest4()
+    {
+        //questFourBegun = false;
+    }
 
 
 
@@ -194,6 +212,17 @@ public class QuestManager : MonoBehaviour
                 trigger.SetActive(true);
             }
                 
+        }
+
+        if(questFourBegun)
+        {
+            lineTwoText.SetText("Gather 5 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1 + ")");
+            if (currentAmount1 == goalAmount1)
+            {
+                SecondMarkY.SetActive(true);
+                SecondMarkX.SetActive(false);
+                dialogueTrigger.CheckMark1_2mark();
+            }
         }
 
         if (dialogueTrigger.newText)

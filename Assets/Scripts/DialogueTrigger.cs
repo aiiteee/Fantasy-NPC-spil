@@ -25,6 +25,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool thirdConversation;
     public bool newText;
     public bool cantFinishYet = false;
+    public bool hasPacked;
 
 
     public GameObject firstMarkY;
@@ -63,13 +64,8 @@ public class DialogueTrigger : MonoBehaviour
                 if (secondConversation)
                 {
                     ConversationManager.Instance.StartConversation(mySecondConversation);
+                    ConversationManager.Instance.SetBool("hasPacked", hasPacked);
                 }
-
-                if (thirdConversation)
-                {
-                    ConversationManager.Instance.StartConversation(myThirdConversation);
-                }
-
                 else
                 {
                     ConversationManager.Instance.StartConversation(myConversation);
@@ -77,7 +73,7 @@ public class DialogueTrigger : MonoBehaviour
                     ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                     ConversationManager.Instance.SetBool("questBegun", questBegun);
                     ConversationManager.Instance.SetBool("chosenDifferentPerson", chosenDifferentPerson);
-                    ConversationManager.Instance.SetBool("cantFinishYet", cantFinishYet);
+                    
                 }
 
                 isInRange = false;
@@ -92,6 +88,25 @@ public class DialogueTrigger : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isInRange = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            isInRange = false;
+        }
+    }
+
 
     public void QuestFinished()
     {
@@ -151,25 +166,14 @@ public class DialogueTrigger : MonoBehaviour
             cantFinishYet = true;
         }
     }
+
+    public void HasPacked()
+    {
+        hasPacked= true;
+    }
     
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isInRange = true;
-        }
-
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        
-        if (other.CompareTag("Player"))
-        {
-            isInRange = false;
-        }
-    }
+    
 
     public void ResetSpeed()
     {
