@@ -45,12 +45,14 @@ public class MapScript : MonoBehaviour
     {
         mapUI.SetActive(true);
         mapIsShowing = true;
+        Time.timeScale = 0;
     }
 
     public void HideMap()
     {
         mapUI.SetActive(false);
         mapIsShowing = false;
+        Time.timeScale = 1;
     }
 
 
