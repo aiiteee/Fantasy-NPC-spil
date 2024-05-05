@@ -19,6 +19,13 @@ public class QuestManager : MonoBehaviour
     [Header("Game Objects")]
     public GameObject returnToQuest;
     public GameObject trigger;
+    public GameObject charlotteTrigger;
+    public GameObject shopkeeperTeaTrigger;
+    public GameObject shopkeeperSugarTrigger;
+    public GameObject shopkeeperTea;
+    public GameObject shopkeeperSugar;
+    public GameObject marigold;
+    public GameObject squire;
 
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
@@ -38,12 +45,23 @@ public class QuestManager : MonoBehaviour
     public bool packageGivenAndrew=false;
     public bool pickUpSword;
     public bool swordFound;
+    public bool shopkeeperDone;
 
-    
-    
+    public bool situation1;
+    public bool situation2;
+    public bool situation3;
+    public bool situation4;
+
+
     public void Awake()
     {
         trigger.SetActive(false);
+
+        charlotteTrigger.SetActive(false);
+        shopkeeperTeaTrigger.SetActive(false);
+        shopkeeperSugarTrigger.SetActive(false);
+        marigold.SetActive(false);
+        squire.SetActive(false);
     }
 
     
@@ -159,9 +177,43 @@ public class QuestManager : MonoBehaviour
         
     }
 
+    public void Quest4Situation1()
+    {
+        situation1 = true;
+        shopkeeperTeaTrigger.SetActive(true);
+        squire.SetActive(true);
+    }
+
+    public void Quest4Situation2()
+    {
+        situation2 = true;
+    }
+
+    public void Quest4Situation3()
+    {
+        situation3 = true;
+    }
+
+    public void Quest4Situation4()
+    {
+        situation4 = true;
+    }
+
+    public void EndSituation()
+    {
+        dialogueTrigger.CheckMark1_1mark();
+        FirstMarkY.SetActive(true);
+        FirstMarkX.SetActive(false);
+    }
+
     public void EndQuest4()
     {
-        //questFourBegun = false;
+        lineOneText.SetText("Return home for the night");
+        lineTwoText.SetText(" ");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+        canGoHome = true;
     }
 
 
@@ -222,6 +274,24 @@ public class QuestManager : MonoBehaviour
                 SecondMarkY.SetActive(true);
                 SecondMarkX.SetActive(false);
                 dialogueTrigger.CheckMark1_2mark();
+            }
+
+            if(dialogueTrigger.finishedQuest)
+            {
+                questFourBegun = false;
+                lineOneText.SetText("Return to Kensleigh");
+                lineTwoText.SetText(" ");
+                FirstMarkY.SetActive(false);
+                SecondMarkY.SetActive(false);
+                FirstMarkX.SetActive(true);
+            }
+        }
+
+        if (situation1)
+        {
+            if (shopkeeperDone)
+            {
+                charlotteTrigger.SetActive(true);
             }
         }
 

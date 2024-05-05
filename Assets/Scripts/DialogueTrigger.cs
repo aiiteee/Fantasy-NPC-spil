@@ -59,7 +59,7 @@ public class DialogueTrigger : MonoBehaviour
             //firstMarkX.SetActive(false);
             if (Input.GetKeyDown(KeyCode.F))
             {
-
+                
 
                 if (secondConversation)
                 {
@@ -73,7 +73,14 @@ public class DialogueTrigger : MonoBehaviour
                     ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                     ConversationManager.Instance.SetBool("questBegun", questBegun);
                     ConversationManager.Instance.SetBool("chosenDifferentPerson", chosenDifferentPerson);
+
                     
+                }
+
+                if(thirdConversation)
+                {
+                    ConversationManager.Instance.StartConversation(myThirdConversation);
+                    ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                 }
 
                 isInRange = false;
@@ -169,10 +176,17 @@ public class DialogueTrigger : MonoBehaviour
 
     public void HasPacked()
     {
-        hasPacked= true;
+        hasPacked = true;
     }
     
+    public void ShopkeeperDone()
+    {
+        questManager.shopkeeperDone = true;
+        questManager.shopkeeperTeaTrigger.SetActive(false);
+        questManager.shopkeeperSugarTrigger.SetActive(false);
+    }
 
+    
     
 
     public void ResetSpeed()

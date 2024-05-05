@@ -14,7 +14,7 @@ public class Packages : MonoBehaviour
 
     public void Update()
     {
-        if (canInteract)
+        if (canInteract&&!dialogueTrigger.hasPacked)
         {
             interactCue.SetActive(true);
             if(Input.GetKeyDown(KeyCode.F))
