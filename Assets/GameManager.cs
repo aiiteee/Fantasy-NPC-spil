@@ -14,18 +14,53 @@ public class GameManager : MonoBehaviour
     public GameObject icons;
 
     public GameObject doorTrigger;
-
     public GameObject cutScene;
+
+    public GameObject riddleNote;
+
+    public bool isOpen;
+
+    public QuestManager questManager;
 
     void Awake()
     {
         cutScene.SetActive(true);
     }
     
-    /*public void ShowDoorTrigger()
+    
+
+    public void Update()
     {
-        showDoorTrigger.SetActive(true);
-    }*/
+        if (!isOpen&&questManager.pickUpSword)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                riddleNote.SetActive(true);
+                isOpen = true;
+                Time.timeScale = 0;
+            }
+        }
+
+        if(isOpen)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                riddleNote.SetActive(false);
+                isOpen = false;
+                Time.timeScale = 1;
+            }
+        }
+
+        
+    }
+
+    public void HideNote()
+    {
+        riddleNote.SetActive(false);
+        isOpen = false;
+        Time.timeScale = 1;
+    }
+
 
     public void ShowMenuBars()
     {

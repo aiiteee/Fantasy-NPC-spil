@@ -16,11 +16,23 @@ public class QuestManager : MonoBehaviour
     public GameObject FirstMarkY;
     public GameObject SecondMarkY;
 
-    [Header("Return after quest object")]
+    [Header("Game Objects")]
     public GameObject returnToQuest;
+    public GameObject trigger;
+    public GameObject charlotteTrigger;
+    public GameObject squireTrigger;
+    public GameObject shopkeeperTeaTrigger;
+    public GameObject shopkeeperSugarTrigger;
+    public GameObject shopkeeperTea;
+    public GameObject shopkeeperSugar;
+    public GameObject marigold;
+    public GameObject squire;
+    public GameObject björn;
 
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
+    public Item item;
+    public BranchSystem branchSystem;
 
     [Header("Item quest")]
     public float goalAmount1;
@@ -28,11 +40,41 @@ public class QuestManager : MonoBehaviour
 
     [Header("Quest bools")]
     public bool questTwoBegun;
+    public bool questThreeBegun;
+    public bool questFourBegun;
     public bool canGoHome;
+    public bool packageGiven;
+    public bool packageGivenAndrew=false;
+    public bool pickUpSword;
+    public bool swordFound;
+    public bool shopkeeperDone;
+    public bool squireFinished;
+    public bool charlotteFinished;
+
+    public bool situation1;
+    public bool situation2;
+    public bool situation3;
+    public bool situation4;
+
+    [Header("Positions")]
+    public Transform squireSpeechPosition;
+
+
+
+    public void Awake()
+    {
+        trigger.SetActive(false);
+
+        charlotteTrigger.SetActive(false);
+        squireTrigger.SetActive(false);
+        shopkeeperTeaTrigger.SetActive(false);
+        shopkeeperSugarTrigger.SetActive(false);
+        marigold.SetActive(false);
+        squire.SetActive(false);
+        björn.SetActive(false);
+    }
 
     
-    
-
 
     public void BeginQuest1()
     {
@@ -85,7 +127,8 @@ public class QuestManager : MonoBehaviour
         FirstMarkY.SetActive(true);
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
-        //Give point towards hero
+        // Give one point towards Björn
+        branchSystem.BjörnPoint();
     }
 
     public void EndQuest2Villain()
@@ -94,6 +137,7 @@ public class QuestManager : MonoBehaviour
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
         // Give one point towards villain
+        branchSystem.RanusPoint();
     }
 
     public void EndQuest2()
@@ -106,7 +150,105 @@ public class QuestManager : MonoBehaviour
 
     public void BeginQuest3()
     {
+        lineOneText.SetText("Bring George a package");
+        lineTwoText.SetText("Gather 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
+        FirstMarkX.SetActive(true);
+        SecondMarkX.SetActive(true);
+        questThreeBegun = true;
+        dialogueTrigger.questBegun = true;
+        
+    }
 
+    public void BeginQuest3part2()
+    {
+        lineOneText.SetText("Bring the potion to Björn");
+        
+        FirstMarkX.SetActive(true);
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        dialogueTrigger.finishedQuest = false;
+        
+    }
+
+    public void UpdateQuest3part2()
+    {
+        lineOneText.SetText("Return to Björn");
+        //Stop timer
+        dialogueTrigger.finishedQuest = true;
+    }
+
+    public void BeginQuest4()
+    {
+        lineOneText.SetText("Get Chocolate from Charlotte at the market");
+        lineTwoText.SetText("Gather 5 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1 + ")");
+        FirstMarkX.SetActive(true);
+        SecondMarkX.SetActive(true);
+        questFourBegun = true;
+        
+    }
+
+    public void Quest4Situation1()
+    {
+        situation1 = true;
+        shopkeeperTeaTrigger.SetActive(true);
+        squire.SetActive(true);
+    }
+
+    public void Quest4Situation2()
+    {
+        situation2 = true;
+        charlotteTrigger.SetActive(true);
+        squire.SetActive(true);
+        shopkeeperSugarTrigger.SetActive(true);
+
+        björn.SetActive(true);
+        squire.transform.position = squireSpeechPosition.position;
+    }
+
+    public void Quest4Situation3()
+    {
+        situation3 = true;
+        marigold.SetActive(true);
+        shopkeeperSugarTrigger.SetActive(true);
+
+        squire.SetActive(true);
+        björn.SetActive(true);
+        squire.transform.position = squireSpeechPosition.position;
+    }
+
+    public void Quest4Situation4()
+    {
+        situation4 = true;
+        charlotteTrigger.SetActive(true);
+    }
+
+    public void EndSituation()
+    {
+        dialogueTrigger.CheckMark1_1mark();
+        FirstMarkY.SetActive(true);
+        FirstMarkX.SetActive(false);
+    }
+
+    public void EndQuest4()
+    {
+        lineOneText.SetText("Return home for the night");
+        lineTwoText.SetText(" ");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+        canGoHome = true;
+    }
+
+
+
+    public void PackageGiven()
+    {
+        packageGiven = true;
+    }
+
+    public void PackageGivenAndrew()
+    {
+        packageGivenAndrew=true;
     }
 
     void Update()
@@ -122,10 +264,112 @@ public class QuestManager : MonoBehaviour
                 dialogueTrigger.CheckMark1_2mark();
             }
             
-            
-            
         }
 
+        if(questThreeBegun)
+        {
+            lineTwoText.SetText("Gather 3 brightbloom flowers and bring them to Andrew (" + currentAmount1 + "/" + goalAmount1 + ")");
+            if (currentAmount1 == goalAmount1&&packageGivenAndrew)
+            {
+                SecondMarkY.SetActive(true);
+                SecondMarkX.SetActive(false);
+                dialogueTrigger.CheckMark1_2mark();
+                
+            }
+
+            if (dialogueTrigger.finishedQuest)
+            {
+                questThreeBegun= false;
+            }
+
+            if(currentAmount1 == goalAmount1)
+            {
+                trigger.SetActive(true);
+            }
+                
+        }
+
+        if(questFourBegun)
+        {
+            lineTwoText.SetText("Gather 5 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1 + ")");
+            if (currentAmount1 == goalAmount1)
+            {
+                SecondMarkY.SetActive(true);
+                SecondMarkX.SetActive(false);
+                dialogueTrigger.CheckMark1_2mark();
+            }
+
+            if(dialogueTrigger.finishedQuest)
+            {
+                questFourBegun = false;
+                lineOneText.SetText("Return to Kensleigh");
+                lineTwoText.SetText(" ");
+                FirstMarkY.SetActive(false);
+                SecondMarkY.SetActive(false);
+                FirstMarkX.SetActive(true);
+            }
+        }
+
+        if (situation1)
+        {
+            if (shopkeeperDone)
+            {
+                charlotteTrigger.SetActive(true);
+                if(charlotteFinished)
+                {
+                    charlotteTrigger.SetActive(false);
+                    EndSituation();
+                }
+            }
+        }
+
+        if(situation2 && shopkeeperDone)
+        {
+            squireTrigger.SetActive(true);
+            if(squireFinished)
+            {
+                squireTrigger.SetActive(false);
+                EndSituation();
+            }
+        }
+
+        if (situation3 && shopkeeperDone)
+        {
+            charlotteTrigger.SetActive(true);
+            if(charlotteFinished)
+            {
+                charlotteTrigger.SetActive(false);
+                squireTrigger.SetActive(true);
+                if (squireFinished)
+                {
+                    squireTrigger.SetActive(false);
+                    EndSituation();
+                }
+            }
+        }
+
+        if (situation4 && charlotteFinished)
+        {
+            charlotteTrigger.SetActive(false);
+            EndSituation();
+        }
+
+        
+
+        if (dialogueTrigger.newText)
+        {
+            if (!swordFound)
+            {
+                lineOneText.SetText("Find Björns sword (press Q for description)");
+                lineTwoText.SetText(" ");
+                //start timer
+                pickUpSword = true;
+            }
+            
+            
+
+            
+        }
     }
 
 }

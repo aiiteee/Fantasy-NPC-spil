@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -11,6 +12,7 @@ public class Item : MonoBehaviour
     public DialogueTrigger dialogueTrigger;
     public GameObject pickUpcue;
 
+    public UnityEvent triggerEvent;
 
 
     // Update is called once per frame
@@ -19,11 +21,32 @@ public class Item : MonoBehaviour
         if(canPickUp)
         {
             pickUpcue.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F)&& dialogueTrigger.newText)
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position, volume);
                 Destroy(gameObject);
                 questManager.currentAmount1 += 1;
+                dialogueTrigger.CanFinishYet();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && questManager.questFourBegun)
+            {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                Destroy(gameObject);
+                questManager.currentAmount1 += 1;
+            }
+
+            if (!dialogueTrigger.newText &&!questManager.questFourBegun)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                    Destroy(gameObject);
+                    questManager.UpdateQuest3part2();
+                    questManager.swordFound = true;
+                    triggerEvent.Invoke();
+                }
+                
             }
 
         }
@@ -42,6 +65,17 @@ public class Item : MonoBehaviour
         {
             canPickUp = true;
         }
+
+        if (other.CompareTag("Player") && questManager.questThreeBegun)
+        {
+            canPickUp = true;
+        }
+
+        if (other.CompareTag("Player") && questManager.pickUpSword)
+        {
+            canPickUp = true;
+        }
+
 
     }
 

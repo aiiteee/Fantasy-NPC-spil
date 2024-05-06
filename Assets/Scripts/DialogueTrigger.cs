@@ -11,16 +11,21 @@ public class DialogueTrigger : MonoBehaviour
     [Header("NPC Conversation")]
     [SerializeField] private NPCConversation myConversation;
     [SerializeField] private NPCConversation mySecondConversation;
+    [SerializeField] private NPCConversation myThirdConversation;
 
     public bool isInRange;
-    public bool hasSpokenTo=false;
+    public bool hasSpokenTo = false;
     public bool finishedQuest = false;
-    public bool questBegun=false;
+    public bool questBegun = false;
     public bool chosenDifferentPerson;
 
     public bool checkMark1 = false;
     public bool checkMark2 = false;
     public bool secondConversation;
+    public bool thirdConversation;
+    public bool newText;
+    public bool cantFinishYet = false;
+    public bool hasPacked;
 
 
     public GameObject firstMarkY;
@@ -29,7 +34,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public PlayerMovement playerScript;
     public QuestManager questManager;
-    
+
 
     public Animator animator;
 
@@ -41,12 +46,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Update()
     {
-        if(checkMark1&&checkMark2)
+        if (checkMark1 && checkMark2)
         {
             finishedQuest = true;
-            
+
         }
-             
+
         if (isInRange)
         {
             visualCue.SetActive(true);
@@ -55,10 +60,11 @@ public class DialogueTrigger : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 
-                
+
                 if (secondConversation)
                 {
                     ConversationManager.Instance.StartConversation(mySecondConversation);
+                    ConversationManager.Instance.SetBool("hasPacked", hasPacked);
                 }
                 else
                 {
@@ -67,19 +73,51 @@ public class DialogueTrigger : MonoBehaviour
                     ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
                     ConversationManager.Instance.SetBool("questBegun", questBegun);
                     ConversationManager.Instance.SetBool("chosenDifferentPerson", chosenDifferentPerson);
+
+                    
                 }
 
-                isInRange =false;
+                if(thirdConversation)
+                {
+                    ConversationManager.Instance.StartConversation(myThirdConversation);
+                    ConversationManager.Instance.SetBool("finishedQuest", finishedQuest);
+                }
+
+                isInRange = false;
                 playerScript.moveSpeed = 0f;
             }
         }
         else
         {
             visualCue.SetActive(false);
-            
+
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isInRange = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            isInRange = false;
+        }
+    }
+
+
+    public void QuestFinished()
+    {
+        finishedQuest = true;
     }
 
     public void HasSpokenTo()
@@ -89,7 +127,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void CheckMark1_1mark()
     {
-        checkMark1=true;
+        checkMark1 = true;
     }
 
     public void CheckMark1_2mark()
@@ -107,35 +145,80 @@ public class DialogueTrigger : MonoBehaviour
         secondConversation = true;
     }
 
+    public void NextThirdConversation()
+    {
+        thirdConversation = true;
+    }
+
     public void ChosenDifferentPerson()
     {
         chosenDifferentPerson = true;
     }
 
-    
-
-    
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public void oneMoreQuest()
     {
-        if (other.CompareTag("Player"))
-        {
-            isInRange = true;
-        }
-
+        finishedQuest = false;
+        hasSpokenTo=false;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public void nextQuestText()
     {
+        newText = true;
+    }
+
+    public void CanFinishYet()
+    {
+        if (questManager.currentAmount1 == questManager.goalAmount1)
+        {
+            cantFinishYet = true;
+        }
+    }
+
+    public void HasPacked()
+    {
+        hasPacked = true;
+    }
+    
+    public void ShopkeeperDone()
+    {
+        questManager.shopkeeperDone = true;
+        if (questManager.situation1)
+        {
+            questManager.shopkeeperTeaTrigger.SetActive(false);
+            questManager.shopkeeperSugarTrigger.SetActive(false);
+        }
+        if (questManager.situation2)
+        {
+            questManager.charlotteTrigger.SetActive(false);
+        }
+        if (questManager.situation3)
+        {
+            questManager.shopkeeperSugarTrigger.SetActive(false);
+        }
         
-        if (other.CompareTag("Player"))
-        {
-            isInRange = false;
-        }
+        
+
     }
+
+    public void SquireFinishedTalking()
+    {
+        questManager.squireFinished = true;
+    }
+
+    public void CharlotteFinishedTalking()
+    {
+        questManager.charlotteFinished = true;
+    }
+    
+    
 
     public void ResetSpeed()
     {
         playerScript.moveSpeed = 5f;
+    }
+
+    public void StartSecondConversation()
+    {
+        ConversationManager.Instance.StartConversation(mySecondConversation);
     }
 }
