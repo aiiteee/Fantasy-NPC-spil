@@ -80,4 +80,24 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void LoadDay2()
+    {
+        SceneManager.LoadScene("Day 1");
+    }
+
+    public void LoadDay3()
+    {
+        SceneManager.LoadScene("Day 2");
+    }
+
+    public void LoadDay4()
+    {
+        SceneManager.LoadScene("Day 4");
+    }
+
+    public void LoadDay5()
+    {
+        SceneManager.LoadScene("Day 5");
+    }
 }

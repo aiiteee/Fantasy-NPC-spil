@@ -114,7 +114,7 @@ public class QuestManager : MonoBehaviour
     public void BeginQuest2()
     {
         lineOneText.SetText("Deliver potion to either Björn or Ranus");
-        lineTwoText.SetText("Gather 3 brightbloom flowers ("+currentAmount1+"/"+goalAmount1+")");
+        //lineTwoText.SetText("Gather 3 brightbloom flowers ("+currentAmount1+"/"+goalAmount1+")");
         FirstMarkX.SetActive(true);
         SecondMarkX.SetActive(true);
         questTwoBegun = true;
@@ -128,7 +128,7 @@ public class QuestManager : MonoBehaviour
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
         // Give one point towards Björn
-        branchSystem.BjörnPoint();
+        BranchSystem.björnPoints+=1;
     }
 
     public void EndQuest2Villain()
@@ -137,7 +137,7 @@ public class QuestManager : MonoBehaviour
         FirstMarkX.SetActive(false);
         dialogueTrigger.CheckMark1_1mark();
         // Give one point towards villain
-        branchSystem.RanusPoint();
+        BranchSystem.ranusPoints+=1;
     }
 
     public void EndQuest2()
@@ -256,7 +256,7 @@ public class QuestManager : MonoBehaviour
         
         if(questTwoBegun)
         {
-            lineTwoText.SetText("Gather 3 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1+")");
+            lineTwoText.SetText("Gatherfijepj 3 brightbloom flowers");
             if (currentAmount1 == goalAmount1)
             {
                 SecondMarkY.SetActive(true);

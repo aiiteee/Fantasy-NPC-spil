@@ -102,9 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600e5f7cf4f3e4dd1ba80ac72e3ad206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.35
+  moveSpeed: 6
+  hexTime: 3
   rb: {fileID: 7050294163562857039}
   animator: {fileID: 7150563005425266681}
+  clip: {fileID: 0}
+  volume: 1000
 --- !u!50 &7050294163562857039
 Rigidbody2D:
   serializedVersion: 4

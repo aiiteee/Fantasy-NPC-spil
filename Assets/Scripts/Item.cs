@@ -21,6 +21,14 @@ public class Item : MonoBehaviour
         if(canPickUp)
         {
             pickUpcue.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.F) && questManager.questTwoBegun)
+            {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                Destroy(gameObject);
+                questManager.currentAmount1 += 1;
+            }
+
             if (Input.GetKeyDown(KeyCode.F)&& dialogueTrigger.newText)
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position, volume);
@@ -36,7 +44,7 @@ public class Item : MonoBehaviour
                 questManager.currentAmount1 += 1;
             }
 
-            if (!dialogueTrigger.newText &&!questManager.questFourBegun)
+            if (!dialogueTrigger.newText &&!questManager.questFourBegun&&!questManager.questTwoBegun)
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {

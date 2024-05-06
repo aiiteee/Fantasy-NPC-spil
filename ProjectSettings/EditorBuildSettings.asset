@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Story scenes/Day 1/Brewery Day 1.unity
     guid: f68ff577c1bc491478bfe23cd22865d3
+  - enabled: 1
+    path: Assets/Scenes/Story scenes/Day 2.unity
+    guid: a0ce840a3b7bb014a8d414a14cabadd9
+  - enabled: 1
+    path: Assets/Scenes/Story scenes/Day 4.unity
+    guid: 693ba6c3fd0ff6c45a32713729ce4968
   m_configObjects: {}
