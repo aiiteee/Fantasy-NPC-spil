@@ -191,6 +191,10 @@ public class DialogueTrigger : MonoBehaviour
         {
             questManager.charlotteTrigger.SetActive(false);
         }
+        if (questManager.situation3)
+        {
+            questManager.shopkeeperSugarTrigger.SetActive(false);
+        }
         
         
 
@@ -198,9 +202,13 @@ public class DialogueTrigger : MonoBehaviour
 
     public void SquireFinishedTalking()
     {
-        questManager.squireTrigger.SetActive(false);
+        questManager.squireFinished = true;
     }
 
+    public void CharlotteFinishedTalking()
+    {
+        questManager.charlotteFinished = true;
+    }
     
     
 

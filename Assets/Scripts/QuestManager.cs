@@ -48,6 +48,8 @@ public class QuestManager : MonoBehaviour
     public bool pickUpSword;
     public bool swordFound;
     public bool shopkeeperDone;
+    public bool squireFinished;
+    public bool charlotteFinished;
 
     public bool situation1;
     public bool situation2;
@@ -197,7 +199,8 @@ public class QuestManager : MonoBehaviour
         situation2 = true;
         charlotteTrigger.SetActive(true);
         squire.SetActive(true);
-        
+        shopkeeperSugarTrigger.SetActive(true);
+
         björn.SetActive(true);
         squire.transform.position = squireSpeechPosition.position;
     }
@@ -205,11 +208,18 @@ public class QuestManager : MonoBehaviour
     public void Quest4Situation3()
     {
         situation3 = true;
+        marigold.SetActive(true);
+        shopkeeperSugarTrigger.SetActive(true);
+
+        squire.SetActive(true);
+        björn.SetActive(true);
+        squire.transform.position = squireSpeechPosition.position;
     }
 
     public void Quest4Situation4()
     {
         situation4 = true;
+        charlotteTrigger.SetActive(true);
     }
 
     public void EndSituation()
@@ -305,12 +315,43 @@ public class QuestManager : MonoBehaviour
             if (shopkeeperDone)
             {
                 charlotteTrigger.SetActive(true);
+                if(charlotteFinished)
+                {
+                    charlotteTrigger.SetActive(false);
+                    EndSituation();
+                }
             }
         }
 
         if(situation2 && shopkeeperDone)
         {
             squireTrigger.SetActive(true);
+            if(squireFinished)
+            {
+                squireTrigger.SetActive(false);
+                EndSituation();
+            }
+        }
+
+        if (situation3 && shopkeeperDone)
+        {
+            charlotteTrigger.SetActive(true);
+            if(charlotteFinished)
+            {
+                charlotteTrigger.SetActive(false);
+                squireTrigger.SetActive(true);
+                if (squireFinished)
+                {
+                    squireTrigger.SetActive(false);
+                    EndSituation();
+                }
+            }
+        }
+
+        if (situation4 && charlotteFinished)
+        {
+            charlotteTrigger.SetActive(false);
+            EndSituation();
         }
 
         
