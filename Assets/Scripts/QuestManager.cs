@@ -199,6 +199,7 @@ public class QuestManager : MonoBehaviour
         situation2 = true;
         charlotteTrigger.SetActive(true);
         squire.SetActive(true);
+        squireTrigger.SetActive(false);
         shopkeeperSugarTrigger.SetActive(true);
 
         björn.SetActive(true);
@@ -256,7 +257,7 @@ public class QuestManager : MonoBehaviour
         
         if(questTwoBegun)
         {
-            lineTwoText.SetText("Gatherfijepj 3 brightbloom flowers");
+            lineTwoText.SetText("Gather 3 brightbloom flowers (" + currentAmount1 + "/" + goalAmount1 + ")");
             if (currentAmount1 == goalAmount1)
             {
                 SecondMarkY.SetActive(true);
