@@ -24,7 +24,7 @@ public class DialogueTrigger : MonoBehaviour
     public bool secondConversation;
     public bool thirdConversation;
     public bool newText;
-    public bool cantFinishYet = false;
+    //public bool cantFinishYet = false;
     public bool hasPacked;
 
 
@@ -166,13 +166,14 @@ public class DialogueTrigger : MonoBehaviour
         newText = true;
     }
 
-    public void CanFinishYet()
+    /*public void CanFinishYet()
     {
         if (questManager.currentAmount1 == questManager.goalAmount1)
         {
             cantFinishYet = true;
         }
-    }
+    }*/
+
 
     public void HasPacked()
     {

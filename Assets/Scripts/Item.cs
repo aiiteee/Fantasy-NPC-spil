@@ -29,12 +29,19 @@ public class Item : MonoBehaviour
                 questManager.currentAmount1 += 1;
             }
 
+            if (Input.GetKeyDown(KeyCode.F) && questManager.questThreeBegun)
+            {
+                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+                Destroy(gameObject);
+                questManager.currentAmount1 += 1;
+            }
+
             if (Input.GetKeyDown(KeyCode.F)&& dialogueTrigger.newText)
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position, volume);
                 Destroy(gameObject);
                 questManager.currentAmount1 += 1;
-                dialogueTrigger.CanFinishYet();
+                //dialogueTrigger.CanFinishYet();
             }
 
             if (Input.GetKeyDown(KeyCode.F) && questManager.questFourBegun)
@@ -44,7 +51,7 @@ public class Item : MonoBehaviour
                 questManager.currentAmount1 += 1;
             }
 
-            if (!dialogueTrigger.newText &&!questManager.questFourBegun&&!questManager.questTwoBegun)
+            if (dialogueTrigger.newText &&!questManager.questFourBegun&&!questManager.questTwoBegun&&!questManager.questThreeBegun)
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {

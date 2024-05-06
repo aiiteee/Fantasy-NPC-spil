@@ -281,6 +281,7 @@ public class QuestManager : MonoBehaviour
             if (dialogueTrigger.finishedQuest)
             {
                 questThreeBegun= false;
+                lineTwoText.SetText("");
             }
 
             if(currentAmount1 == goalAmount1)
@@ -366,6 +367,26 @@ public class QuestManager : MonoBehaviour
                 //start timer
                 pickUpSword = true;
             }
+
+            if(swordFound)
+            {
+                lineOneText.SetText("Return to Björn");
+                dialogueTrigger.finishedQuest = true;
+            }
+
+            if (canGoHome)
+            {
+                EndQuest1();
+            }
+            /*else
+            {
+                lineOneText.SetText("Bring the potion to Björn");
+
+                FirstMarkX.SetActive(true);
+                FirstMarkY.SetActive(false);
+                SecondMarkY.SetActive(false);
+                dialogueTrigger.finishedQuest = false;
+            }*/
             
             
 
