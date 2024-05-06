@@ -3,14 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    public float moveSpeed = 6;
     public float hexTime = 3;
     public Rigidbody2D rb;
     Vector2 movement;
     public Animator animator;
-    public AudioClip clip;
-    public float volume = 1000;
-
 
 
     // Update is called once per frame
@@ -43,10 +40,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Hexed", 1);
             Invoke("deHex", hexTime);
         }
-        if (other.gameObject.tag == "Item")
-        {
-                AudioSource.PlayClipAtPoint(clip, transform.position, volume);
-        }
     }
     void deHex()
     {
@@ -55,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void deFrog()
     {
-        moveSpeed = 5;
+        moveSpeed = 6;
     }
 
 }
