@@ -22,12 +22,12 @@ public class Packages : MonoBehaviour
                 interactCue.SetActive(false);
                 canInteract = false;
 
-                if(branchSystem.björnPoints == 1)
+                if(BranchSystem.björnPoints == 1)
                 {
                     choicesBjörn.SetActive(true);
                 }
 
-                if(branchSystem.ranusPoints == 1)
+                if(BranchSystem.ranusPoints == 1)
                 {
                     choicesRanus.SetActive(true);
                 }
