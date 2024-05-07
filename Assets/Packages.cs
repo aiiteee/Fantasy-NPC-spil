@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +6,13 @@ public class Packages : MonoBehaviour
 {
     public bool canInteract;
     public GameObject interactCue;
+
+    [Header("GameObjects")]
     public GameObject choicesBjörn;
     public GameObject choicesRanus;
 
     public BranchSystem branchSystem;
-    public DialogueTrigger dialogueTrigger;
+    public DialogueTrigger dialogueTrigger; 
 
     public void Update()
     {

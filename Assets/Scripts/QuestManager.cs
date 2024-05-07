@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
     public GameObject marigold;
     public GameObject squire;
     public GameObject björn;
+    
 
     [Header("Scripts")]
     public DialogueTrigger dialogueTrigger;
@@ -55,6 +56,9 @@ public class QuestManager : MonoBehaviour
     public bool situation2;
     public bool situation3;
     public bool situation4;
+
+    public bool heroEnding;
+    public bool villainEnding;
 
     [Header("Positions")]
     public Transform squireSpeechPosition;
@@ -238,6 +242,28 @@ public class QuestManager : MonoBehaviour
         SecondMarkY.SetActive(false);
         FirstMarkX.SetActive(true);
         canGoHome = true;
+    }
+
+    public void EndGameHero()
+    {
+        lineOneText.SetText("Return home for the night");
+        lineTwoText.SetText(" ");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+        canGoHome = true;
+        heroEnding = true;
+    }
+
+    public void EndGameVillain()
+    {
+        lineOneText.SetText("Return home for the night");
+        lineTwoText.SetText(" ");
+        FirstMarkY.SetActive(false);
+        SecondMarkY.SetActive(false);
+        FirstMarkX.SetActive(true);
+        canGoHome = true;
+        villainEnding = true;
     }
 
 

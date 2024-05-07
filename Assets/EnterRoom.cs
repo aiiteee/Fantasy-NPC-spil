@@ -16,6 +16,8 @@ public class EnterRoom : MonoBehaviour
 
     public GameObject lastText;
     public GameObject finishQuestFirst;
+    public GameObject heroEndingText;
+    public GameObject villainEndingText;
     
 
     // Update is called once per frame
@@ -31,6 +33,14 @@ public class EnterRoom : MonoBehaviour
                 if(enterHome&&questManager.canGoHome)
                 {
                     lastText.SetActive(true);
+                    if (questManager.heroEnding)
+                    {
+                        heroEndingText.SetActive(true);
+                    }
+                    if (questManager.villainEnding)
+                    {
+                        villainEndingText.SetActive(true);
+                    }
                 }
 
                 if (enterHome && !questManager.canGoHome)
