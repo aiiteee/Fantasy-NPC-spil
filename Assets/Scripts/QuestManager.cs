@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
     public GameObject marigold;
     public GameObject squire;
     public GameObject björn;
+    public GameObject ranus;
     
 
     [Header("Scripts")]
@@ -215,6 +216,7 @@ public class QuestManager : MonoBehaviour
         situation3 = true;
         marigold.SetActive(true);
         shopkeeperSugarTrigger.SetActive(true);
+        ranus.SetActive(false);
 
         squire.SetActive(true);
         björn.SetActive(true);
@@ -398,6 +400,7 @@ public class QuestManager : MonoBehaviour
             {
                 lineOneText.SetText("Return to Björn");
                 dialogueTrigger.finishedQuest = true;
+                villainEnding=true;
             }
 
             if (canGoHome)

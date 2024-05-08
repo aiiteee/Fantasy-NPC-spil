@@ -36,11 +36,7 @@ public class MapScript : MonoBehaviour
                 HideMap();
                 Time.timeScale = 1;
             }
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                HideMap();
-                Time.timeScale = 1;
-            }
+            
         }
 
         
