@@ -228,8 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e10e0384bca79842a0585c71b5947c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: eb10a232624fe544b81366341f2e74eb, type: 3}
+  clip: {fileID: 8300000, guid: 053bf524c2049e84d9c5b7abc7141b29, type: 3}
   volume: 1
   canPickUp: 0
   questManager: {fileID: 0}
+  dialogueTrigger: {fileID: 0}
   pickUpcue: {fileID: 0}
+  triggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
