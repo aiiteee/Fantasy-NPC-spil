@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject inventory;
     public GameObject activeQuests;
     public GameObject icons;
+    public GameObject areYouSure;
 
     public GameObject doorTrigger;
     public GameObject cutScene;
@@ -79,6 +80,23 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ShowSecurity()
+    {
+        HideMenuBars();
+        areYouSure.SetActive(true);
+    }
+
+    public void HideSecurity()
+    {
+        ShowMenuBars();
+        areYouSure.SetActive(false);
     }
 
     public void LoadDay2()
